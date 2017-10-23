@@ -1,20 +1,39 @@
 #include <stdio.h>
-#define S0 '0'
-#define S1 '1'
-
+#define S0 0
+#define S1 1
+#define S2 2
 int main(){
-  int i=0;
+  int i=0,State=S0;
   char str[256];
   scanf("%s",str);
-  while(str[i+2]!='\0'){
-    if(str[i]==S0)
-      i++;
-    else if(str[i+1]==S0 && str[i+2]==S1){
-      printf("accept\n");
-      return 0;
-    }else
-      i++;
+  while(str[i]!='\0'){
+    switch(State){
+      case S0:
+        if(str[i]=='0')
+          State=S0;
+        else
+          State=S1;
+        break;
+      case S1:
+        if(str[i]=='0')
+          State=S2;
+        else
+          State=S1;
+        break;
+      case S1:
+        if(str[i]=='0')
+          State=S0;
+        else
+          State=S3;
+        break;
+      case S3:
+        break;
+    }
+    i++;
   }
-  printf("reject\n");
+  if(State==S3)
+    printf("accept\n");
+  else
+    printf("reject\n");
   return 0;
 }
