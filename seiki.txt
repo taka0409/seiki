@@ -14,4 +14,4 @@ grep "^\([01]\{3\}\)*\([01]\{3\}\)$" example3.txt
 
 grep "\(101\)\+" example3.txt
 
-grep "^\(1*01*0\)*\([^0]*\)$" example3.txt
+grep "^\(1*01*0\)\+\([^0]*\)$" example3.txt
